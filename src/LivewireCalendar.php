@@ -92,8 +92,8 @@ class LivewireCalendar extends Component
         $initialYear = $initialYear ?? Carbon::today()->year;
         $initialMonth = $initialMonth ?? Carbon::today()->month;
 
-        $this->startsAt = Carbon::createFromDate($initialYear, $initialMonth, 1)->startOfDay();
-        $this->endsAt = $this->startsAt->clone()->endOfMonth()->startOfDay();
+        $this->startsAt = Carbon::createFromDate($initialYear, $initialMonth, date('j'))->startOfWeek();
+        $this->endsAt = $this->startsAt->clone()->addWeeks(5)->endOfWeek();
 
         $this->calculateGridStartsEnds();
 
